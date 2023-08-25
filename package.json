@@ -1,0 +1,26 @@
+{
+  "name": "webpack-module-federation-node-esm-example",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "pnpm run --parallel \"/^start:.*/\"",
+    "start:a": "wait-on http://localhost:3001 && node --no-warnings --experimental-network-imports dist/a/main.mjs",
+    "start:a-static": "serve -l 3000 dist/a",
+    "start:b": "wait-on http://localhost:3001 && node --no-warnings --experimental-network-imports dist/b/main.mjs",
+    "start:b-static": "serve -l 3001 dist/b",
+    "build": "pnpm run \"/^build:.*/\"",
+    "build:a": "APP_NAME=a webpack --mode development",
+    "build:b": "APP_NAME=b webpack --mode development"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "serve": "14.2.1",
+    "wait-on": "7.0.1",
+    "webpack": "5.88.2",
+    "webpack-cli": "5.1.4"
+  }
+}
